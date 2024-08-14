@@ -2,18 +2,18 @@ package Interfaz.Customer;
 import java.awt.Color;
 import java.awt.Cursor;
 import java.awt.event.MouseEvent;
-import javax.swing.ImageIcon;
-
-import javax.swing.JButton;
-import Interfaz.GCIAStyle;
-
 import java.awt.event.MouseListener;
 
-public class GCButton extends JButton implements MouseListener {
-    public GCButton(String text){
+import javax.swing.ImageIcon;
+import javax.swing.JButton;
+
+import Interfaz.GCIAStyle;
+
+public class GCButton2 extends JButton implements MouseListener {
+public GCButton2(String text){
         customizeComponent(text);
     }
-    public GCButton(String text, String iconnew){
+    public GCButton2(String text, String iconnew){
         customizeComponent(text, iconnew);
     }
 
@@ -29,9 +29,9 @@ public class GCButton extends JButton implements MouseListener {
     }
     public void customizeComponent(String text) {
         setText(text);
-        setOpaque(true);
+        setOpaque(false);
         setFocusPainted(false);
-        setBorderPainted(true);
+        setBorderPainted(false);
         setContentAreaFilled(false);
         setForeground(GCIAStyle.GCCOLOR_FONT);
         setHorizontalAlignment(GCIAStyle.GCALIGNMENT_CENTER);
@@ -64,5 +64,4 @@ public class GCButton extends JButton implements MouseListener {
         setForeground(Color.GRAY);
         setCursor(GCIAStyle.GCCURSOR_DEFAULT);
     }
-    
 }
