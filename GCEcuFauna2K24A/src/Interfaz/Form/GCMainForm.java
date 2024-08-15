@@ -17,8 +17,9 @@ public class GCMainForm extends JFrame{
     }
 
     private void customizeComponent(String tilteApp) {
+        
         setTitle(tilteApp);
-        setSize(600, 815);
+        setSize(600, 820);
         setResizable(true);
         setLocationRelativeTo(null);
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);

@@ -9,6 +9,9 @@ import javax.swing.JPanel;
 import Interfaz.GCIAStyle;
 
 public class GCPanelCentral extends JPanel{
+
+    
+
     public GCPanelCentral(){
         customizeComponent();
     }
