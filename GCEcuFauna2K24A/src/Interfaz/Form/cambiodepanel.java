@@ -9,34 +9,34 @@ import javax.swing.JProgressBar;
 import Interfaz.GCIAStyle;
 
 public abstract class cambiodepanel {
-    private static JFrame       frmSplash;
-    private static JProgressBar prbLoaging;
-    private static ImageIcon    icoImagen ;
-    private static JLabel       lblSplash ;
+    private static JFrame       GCfrmSplash;
+    private static JProgressBar GCprbLoaging;
+    private static ImageIcon    GCicoImagen ;
+    private static JLabel       GClblSplash ;
 
     public static void show() {
-        icoImagen  = new ImageIcon(GCIAStyle.GCURL_MAIN);
-        lblSplash  = new JLabel(icoImagen);
-        prbLoaging = new JProgressBar(0, 99);
+        GCicoImagen  = new ImageIcon(GCIAStyle.GCURL_MAIN);
+        GClblSplash  = new JLabel(GCicoImagen);
+        GCprbLoaging = new JProgressBar(0, 99);
 
-        prbLoaging.setStringPainted(true);
+        GCprbLoaging.setStringPainted(true);
         
-        frmSplash = new JFrame();
-        frmSplash.setUndecorated(true);
-        frmSplash.getContentPane().add(lblSplash, BorderLayout.CENTER);
-        frmSplash.add(prbLoaging, BorderLayout.SOUTH);
-        frmSplash.setSize(icoImagen.getIconWidth(), icoImagen.getIconHeight());
-        frmSplash.setLocationRelativeTo(null); // Centrar en la pantalla
+        GCfrmSplash = new JFrame();
+        GCfrmSplash.setUndecorated(true);
+        GCfrmSplash.getContentPane().add(GClblSplash, BorderLayout.CENTER);
+        GCfrmSplash.add(GCprbLoaging, BorderLayout.SOUTH);
+        GCfrmSplash.setSize(GCicoImagen.getIconWidth(), GCicoImagen.getIconHeight());
+        GCfrmSplash.setLocationRelativeTo(null);
 
-        frmSplash.setVisible(true);
+        GCfrmSplash.setVisible(true);
         for (int i = 0; i <= 100; i++) {
             try {
                 Thread.sleep(10); // Espera por 10 milisegundos
             } catch (InterruptedException e) {
                 e.printStackTrace();
             }
-            prbLoaging.setValue(i);
+            GCprbLoaging.setValue(i);
         }
-        frmSplash.setVisible(false);
+        GCfrmSplash.setVisible(false);
     }
 }

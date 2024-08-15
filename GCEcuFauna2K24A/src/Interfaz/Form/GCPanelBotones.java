@@ -12,8 +12,8 @@ import Interfaz.Customer.GCLabel2;
 
 public class GCPanelBotones extends JPanel{
     public GCButton
-    btnGuardar = new GCButton("Guardar"),
-    btnEliminar = new GCButton("Eliminar");
+    GCbtnGuardar = new GCButton("Guardar"),
+    GCbtnEliminar = new GCButton("Eliminar");
 
     public GCPanelBotones(){
         customizeComponent();
@@ -27,8 +27,8 @@ public class GCPanelBotones extends JPanel{
         setPreferredSize(new Dimension(40, 75));
         setLayout(new GridLayout(2, 3, 100, 0));
 
-        add(btnEliminar);
-        add(btnGuardar);
+        add(GCbtnEliminar);
+        add(GCbtnGuardar);
     }
 
     private void customizeComponent2() {
@@ -38,10 +38,10 @@ public class GCPanelBotones extends JPanel{
 
     private void configurarAcciones() {
         
-        btnEliminar.addActionListener(e -> {
+        GCbtnEliminar.addActionListener(e -> {
         });
         
-        btnGuardar.addActionListener(e -> {
+        GCbtnGuardar.addActionListener(e -> {
         });
         
     }

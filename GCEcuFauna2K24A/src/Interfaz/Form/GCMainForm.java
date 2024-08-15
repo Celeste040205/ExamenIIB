@@ -8,9 +8,9 @@ import javax.swing.JFrame;
 import Interfaz.GCIAStyle;
 
 public class GCMainForm extends JFrame{
-    GCCedNomPanel pGcCedNom = new GCCedNomPanel();
-    GCPanelCentral pCentral = new GCPanelCentral();
-    GCPanelBotones pBotones = new GCPanelBotones();
+    GCCedNomPanel GCCedNom = new GCCedNomPanel();
+    GCPanelCentral GCCentral = new GCPanelCentral();
+    GCPanelBotones GCBotones = new GCPanelBotones();
 
     public GCMainForm(String tilteApp){
         customizeComponent(tilteApp);
@@ -19,19 +19,19 @@ public class GCMainForm extends JFrame{
     private void customizeComponent(String tilteApp) {
 
         setTitle(tilteApp);
-        setSize(600, 620);
-        setResizable(false);
+        setSize(600, 720);
+        setResizable(true);
         setLocationRelativeTo(null);
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         setBackground(GCIAStyle.GCCOLOR_FONDO);
 
-        Container container = getContentPane();
-        container.setLayout(new BorderLayout());
+        Container GCcontainer = getContentPane();
+        GCcontainer.setLayout(new BorderLayout());
 
         // Agregar los paneles al contenedor
-        container.add(pGcCedNom, BorderLayout.NORTH);
-        container.add(pCentral, BorderLayout.CENTER);
-        container.add(pBotones, BorderLayout.SOUTH);
+        GCcontainer.add(GCCedNom, BorderLayout.NORTH);
+        GCcontainer.add(GCCentral, BorderLayout.CENTER);
+        GCcontainer.add(GCBotones, BorderLayout.SOUTH);
         setVisible(true);
     }
 

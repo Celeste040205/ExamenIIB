@@ -5,8 +5,8 @@ public class App {
     public static void main(String[] args) throws Exception {
 
         //cambiodepanel.show();
-        GCMainForm frmMain = new GCMainForm("GCEcuFauna");
-        frmMain.setVisible(true);
+        GCMainForm GCfrmMain = new GCMainForm("GCEcuFauna");
+        GCfrmMain.setVisible(true);
  
     }
 }
