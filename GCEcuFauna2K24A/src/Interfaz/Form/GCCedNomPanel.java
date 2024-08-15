@@ -17,7 +17,7 @@ public class GCCedNomPanel extends JPanel{
     public GCCedNomPanel(){
         customizeComponent();
 
-        setBorder(BorderFactory.createEmptyBorder(7, 150, 5, 60));
+        setBorder(BorderFactory.createEmptyBorder(7, 150, 7, 60));
         setLayout(new GridLayout(2, 2, 0, 10));
         add(new GCLabel("Cedula:"));
         add(cedula = new GCLabelText("175297304-8"));

@@ -17,10 +17,10 @@ public class GCMainForm extends JFrame{
     }
 
     private void customizeComponent(String tilteApp) {
-        
+
         setTitle(tilteApp);
-        setSize(600, 820);
-        setResizable(true);
+        setSize(600, 620);
+        setResizable(false);
         setLocationRelativeTo(null);
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         setBackground(GCIAStyle.GCCOLOR_FONDO);
