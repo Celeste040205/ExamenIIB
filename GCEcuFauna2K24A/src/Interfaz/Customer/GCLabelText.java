@@ -12,11 +12,10 @@ public class GCLabelText extends JPanel{
 
     public GCLabelText(String etiqueta) {
         setLayout(new BorderLayout());
-
         lblEtiq.setCustomizeComponent(  etiqueta, 
-                                            GCIAStyle.GCFONT_SMALL, 
-                                            GCIAStyle.GCCOLOR_FONT_LIGHT, 
-                                            GCIAStyle.GCALIGNMENT_LEFT); 
+                                            GCIAStyle.GCFONT_BOLD, 
+                                            GCIAStyle.GCCOLOR_FONT_DARK,
+                                            GCIAStyle.GCALIGNMENT_CENTER); 
         txtCont.setBorderLine();
         add(lblEtiq, BorderLayout.NORTH);
         add(txtCont, BorderLayout.CENTER);

@@ -21,7 +21,7 @@ public class GCLabelLink extends GCLabel implements MouseListener{
     
     void setPersonalizacion(){
         addMouseListener(this);
-        setOpaque(false);
+        setOpaque(true);
         setForeground(GCIAStyle.GCCOLOR_FONT);
     }
     

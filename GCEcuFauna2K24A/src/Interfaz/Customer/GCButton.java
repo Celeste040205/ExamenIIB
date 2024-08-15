@@ -32,11 +32,11 @@ public class GCButton extends JButton implements MouseListener {
         setOpaque(true);
         setFocusPainted(false);
         setBorderPainted(true);
-        setContentAreaFilled(false);
-        setForeground(GCIAStyle.GCCOLOR_FONT);
+        setContentAreaFilled(true);
+        setForeground(GCIAStyle.GCCOLOR_FONT_DARK);
         setHorizontalAlignment(GCIAStyle.GCALIGNMENT_CENTER);
-        setFont(GCIAStyle.GCFONT); 
-        //setBackground(GCIAStyle.GCCOLOR_BORDER);
+        setFont(GCIAStyle.GCFONT);
+        setBackground(GCIAStyle.GCCOLOR_FONT_LIGHT);
         
         setCursor(new Cursor(Cursor.HAND_CURSOR));
     }

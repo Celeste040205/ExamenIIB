@@ -17,17 +17,17 @@ public class GCTextBox extends JTextField{
 
     private void customizeComponent() {
         setBorderRect();
-        setFont(GCIAStyle.GCFONT);  
+        setBackground(GCIAStyle.GCCOLOR_FONDO2);
+        setFont(GCIAStyle.GCFONT_SMALL);  
         setForeground(GCIAStyle.GCCOLOR_FONT_LIGHT);  
-        setCaretColor(GCIAStyle.GCCOLOR_CURSOR);    // Color del cursor
-        setMargin(new Insets(10, 5, 5, 5));      // Ajusta los márgenes
-        setOpaque(false);                       // Fondo transparente
-        //setUI(new BasicTextFieldUI());  // Para deshabilitar el subrayado por defecto
+        setCaretColor(GCIAStyle.GCCOLOR_CURSOR); 
+        setMargin(new Insets(10, 10, 10, 10));    
+        setOpaque(true);                     
     }
 
     public void setBorderRect() {
         Border lineBorder = BorderFactory.createLineBorder(GCIAStyle.GCCOLOR_BORDER);
-        Border emptyBorder = new EmptyBorder(5, 5, 5, 5);  // Márgenes internos
+        Border emptyBorder = new EmptyBorder(5, 10, 5, 10);  // Márgenes internos
         setBorder( new CompoundBorder(lineBorder, emptyBorder));
     }
 
