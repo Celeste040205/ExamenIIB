@@ -1,5 +1,5 @@
 import Interfaz.Form.GCMainForm;
-import Interfaz.Form.cambiodepanel;
+//import Interfaz.Form.cambiodepanel;
 public class App {
 
     public static void main(String[] args) throws Exception {

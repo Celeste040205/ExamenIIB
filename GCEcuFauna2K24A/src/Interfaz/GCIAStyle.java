@@ -27,7 +27,7 @@ public abstract class GCIAStyle {
 
     public static final Font  GCFONT              = new Font("JetBrains Mono", Font.BOLD, 20);
     public static final Font  GCFONT_BOLD         = new Font("JetBrains Mono", Font.PLAIN | Font.PLAIN, 15);
-    public static final Font  GCFONT_BOLD2        = new Font("JetBrains Mono", Font.BOLD | Font.PLAIN, 12);
+    public static final Font  GCFONT_BOLD2        = new Font("JetBrains Mono", Font.BOLD | Font.PLAIN, 15);
     public static final Font  GCFONT_BOLD3        = new Font("JetBrains Mono", Font.BOLD | Font.PLAIN, 15);
     public static final Font  GCFONT_SMALL        = new Font("JetBrains Mono", Font.PLAIN| Font.PLAIN, 10);
     
