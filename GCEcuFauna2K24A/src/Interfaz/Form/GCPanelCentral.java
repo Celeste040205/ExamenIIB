@@ -30,12 +30,12 @@ public class GCPanelCentral extends JPanel{
     public GCButton3
     GCbtnCrear = new GCButton3("Crear Hormiga");
 
-    
     public GCPanelCentral(){
+
         JPanel GCtopPanel = new JPanel(new FlowLayout(FlowLayout.LEFT));
         try {
             Image GClogo = ImageIO.read(GCIAStyle.GCURL_LOGOSF);
-            GClogo = GClogo.getScaledInstance(90, 90, Image.SCALE_SMOOTH);
+            GClogo = GClogo.getScaledInstance(100, 100, Image.SCALE_SMOOTH);
             GCtopPanel.add(new JLabel(new ImageIcon(GClogo)));
         } catch (IOException e) {
             e.printStackTrace();
@@ -44,7 +44,7 @@ public class GCPanelCentral extends JPanel{
         GClistModel = new DefaultListModel<>();
         GClista = new JList<>(GClistModel);
         JScrollPane GCscrollPane = new JScrollPane(GClista);
-        GCscrollPane.setPreferredSize(new Dimension(550, 300));
+        GCscrollPane.setPreferredSize(new Dimension(550, 200));
 
         JPanel GCbottomPanel         = new JPanel(new GridLayout(2, 2, 30, 20));
         final int[] count = {0};

@@ -17,7 +17,7 @@ public class GCPanelBotones extends JPanel{
 
     public GCPanelBotones(){
         customizeComponent();
-        customizeComponent2();
+        //customizeComponent2();
         configurarAcciones();
     }
 
@@ -29,9 +29,6 @@ public class GCPanelBotones extends JPanel{
 
         add(GCbtnEliminar);
         add(GCbtnGuardar);
-    }
-
-    private void customizeComponent2() {
         add(new GCLabel2(" "));
         add(new GCLabel2("\u00A9 2024 GCEcuFauna"));
     }
