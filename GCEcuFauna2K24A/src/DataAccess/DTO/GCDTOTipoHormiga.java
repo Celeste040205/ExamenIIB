@@ -1,6 +1,6 @@
 package DataAccess.DTO;
 
-public class GCDTOGenoAlimento {
+public class GCDTOTipoHormiga {
     private Integer   gcRowNum         ;
     private Integer   gcIdCatalogo     ;           
     private Integer   gcIdCatalogoTipo ;           
@@ -10,10 +10,10 @@ public class GCDTOGenoAlimento {
     private String    gcFechaCreacion  ;            
     private String    gcFechaModifica  ;  
 
-    public GCDTOGenoAlimento(){}
+    public GCDTOTipoHormiga(){}
 
 
-    public GCDTOGenoAlimento(Integer gcRowNum, Integer gcIdCatalogo, Integer gcIdCatalogoTipo, String gcNombre,
+    public GCDTOTipoHormiga(Integer gcRowNum, Integer gcIdCatalogo, Integer gcIdCatalogoTipo, String gcNombre,
             String gcDescripcion, String gcEstado, String gcFechaCreacion, String gcFechaModifica) {
         this.gcRowNum           = gcRowNum;
         this.gcIdCatalogo       = gcIdCatalogo;

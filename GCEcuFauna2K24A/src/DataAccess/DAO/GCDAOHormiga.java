@@ -45,7 +45,7 @@ public class GCDAOHormiga extends GCDataHelper implements GCIDAO<GCDTOHormiga> {
                      +" WHERE   Estado ='A'         ";
 
         try {
-            Connection conn = openConnection();         // conectar a DB     
+            Connection conn   = openConnection();         // conectar a DB     
             Statement  gcStmt = conn.createStatement();   // CRUD : select * ...    
             ResultSet  gcRs   = gcStmt.executeQuery(query);    // ejecutar la
                          while (gcRs.next()) {
@@ -87,15 +87,15 @@ public class GCDAOHormiga extends GCDataHelper implements GCIDAO<GCDTOHormiga> {
     @Override
     public GCDTOHormiga readBy(Integer id) throws Exception {
         GCDTOHormiga gcOs = new GCDTOHormiga();
-        String query =" SELECT IdHormiga         " 
-                     +" ,TipoHormiga             " 
-                     +" ,Estado                  " 
-                     +" ,FechaCrea               " 
-                     +" ,FechaModifica           "
-                     +" FROM    GCHORMIGA        "
+        String query =" SELECT IdHormiga                  " 
+                     +" ,TipoHormiga                      " 
+                     +" ,Estado                           " 
+                     +" ,FechaCrea                        " 
+                     +" ,FechaModifica                    "
+                     +" FROM    GCHORMIGA                 "
                      +" WHERE   Estado ='A'  AND IdHormiga"+ id.toString();
         try {
-            Connection conn = openConnection();         // conectar a DB     
+            Connection conn   = openConnection();         // conectar a DB     
             Statement  gcStmt = conn.createStatement();   // CRUD : select * ...    
             ResultSet  gcRs   = gcStmt.executeQuery(query);    // ejecutar la
                          while (gcRs.next()) {
@@ -119,8 +119,8 @@ public class GCDAOHormiga extends GCDataHelper implements GCIDAO<GCDTOHormiga> {
     @Override
     public boolean update(GCDTOHormiga entity) throws Exception {
         DateTimeFormatter dtf = DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss");  
-        LocalDateTime now = LocalDateTime.now();
-        String query = "UPDATE GCHORMIGA SET TipoHormiga = ?, IdIngestaNativa = ?, IdGenoAlimento = ?, IdSexo = ?, IdUbicacion = ?,    FechaModifica = ? WHERE IdHormiga = ?";
+        LocalDateTime now     = LocalDateTime.now();
+        String query          = "UPDATE GCHORMIGA SET TipoHormiga = ?, IdIngestaNativa = ?, IdGenoAlimento = ?, IdSexo = ?, IdUbicacion = ?,    FechaModifica = ? WHERE IdHormiga = ?";
         try {
             Connection          conn = openConnection();
             PreparedStatement pstmt  = conn.prepareStatement(query);
@@ -138,6 +138,4 @@ public class GCDAOHormiga extends GCDataHelper implements GCIDAO<GCDTOHormiga> {
             throw e;
         }
     }
-
-
 }

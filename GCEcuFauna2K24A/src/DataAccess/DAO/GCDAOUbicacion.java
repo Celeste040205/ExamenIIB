@@ -45,7 +45,7 @@ public class GCDAOUbicacion extends GCDataHelper implements GCIDAO<GCDTOUbicacio
                      +" WHERE   Estado ='A'      ";
 
         try {
-            Connection conn = openConnection();         // conectar a DB     
+            Connection conn   = openConnection();         // conectar a DB     
             Statement  gcStmt = conn.createStatement();   // CRUD : select * ...    
             ResultSet  gcRs   = gcStmt.executeQuery(query);    // ejecutar la
                          while (gcRs.next()) {
@@ -60,7 +60,7 @@ public class GCDAOUbicacion extends GCDataHelper implements GCIDAO<GCDTOUbicacio
                          }
                     } 
                     catch (SQLException e) {
-                        throw e; //new PatException(e.getMessage(), getClass().getName(), "readAll()");
+                        throw e; 
                     }
                     return lst; 
                 }
@@ -85,21 +85,21 @@ public class GCDAOUbicacion extends GCDataHelper implements GCIDAO<GCDTOUbicacio
     @Override
     public GCDTOUbicacion readBy(Integer id) throws Exception {
         GCDTOUbicacion gcOs = new GCDTOUbicacion();
-        String query =" SELECT IdUbicacion       " 
-                     +" ,Pais                    " 
-                     +" ,Region                  " 
-                     +" ,Provincia               " 
-                     +" ,Estado                  " 
-                     +" ,FechaCreacion           " 
-                     +" ,FechaModifica           "
-                     +" FROM    GCUBICACION      "
+        String query =" SELECT IdUbicacion                   "   
+                     +" ,Pais                                " 
+                     +" ,Region                              " 
+                     +" ,Provincia                           " 
+                     +" ,Estado                              " 
+                     +" ,FechaCreacion                       " 
+                     +" ,FechaModifica                       "
+                     +" FROM    GCUBICACION                  "
                      +" WHERE   Estado ='A'  AND ID UBICACION"+ id.toString();
         try {
-            Connection conn = openConnection();         // conectar a DB     
+            Connection conn   = openConnection();         // conectar a DB     
             Statement  gcStmt = conn.createStatement();   // CRUD : select * ...    
             ResultSet  gcRs   = gcStmt.executeQuery(query);    // ejecutar la
                          while (gcRs.next()) {
-                             GCDTOUbicacion g = new GCDTOUbicacion( gcRs.getInt(1)     
+                             GCDTOUbicacion s = new GCDTOUbicacion( gcRs.getInt(1)     
                                                      ,gcRs.getString(2)  // Nombre             
                                                      ,gcRs.getString(3)  // Estado         
                                                      ,gcRs.getString(4)  // FechaCrea      
@@ -117,8 +117,8 @@ public class GCDAOUbicacion extends GCDataHelper implements GCIDAO<GCDTOUbicacio
     @Override
     public boolean update(GCDTOUbicacion entity) throws Exception {
         DateTimeFormatter dtf = DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss");  
-        LocalDateTime now = LocalDateTime.now();
-        String query = "UPDATE GCUBICACION SET Pais = ?, Region = ?, provincia = ?,   FechaModifica = ? WHERE IdUbicacion = ?";
+        LocalDateTime now     = LocalDateTime.now();
+        String query          = "UPDATE GCUBICACION SET Pais = ?, Region = ?, provincia = ?,   FechaModifica = ? WHERE IdUbicacion = ?";
         try {
             Connection          conn = openConnection();
             PreparedStatement pstmt  = conn.prepareStatement(query);
@@ -134,11 +134,4 @@ public class GCDAOUbicacion extends GCDataHelper implements GCIDAO<GCDTOUbicacio
             throw e;
         }
     }
-
-
-    
-
-
-
-
 }

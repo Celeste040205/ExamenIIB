@@ -5,13 +5,13 @@ import java.sql.DriverManager;
 import java.sql.SQLException;
 
 public class GCDataHelper {
-    private static String DBPathConnection = "jdbc:sqlite:DataBase/GCEcuFauna.sqlite";
+    private static String GCConnection = "jdbc:sqlite:DataBase/GCEcuAFauna.sqlite";
     private static Connection conn = null;
 
     protected static synchronized Connection openConnection() throws Exception {
         try {
             if (conn == null) {
-                conn = DriverManager.getConnection(DBPathConnection);
+                conn = DriverManager.getConnection(GCConnection);
             }
         } catch (SQLException e) {
             throw e;
@@ -27,5 +27,9 @@ public class GCDataHelper {
         } catch (Exception e) {
             throw e;
         }
+    }
+
+    public static Connection getConnection() throws SQLException {
+        return DriverManager.getConnection(GCConnection);
     }
 }

@@ -48,7 +48,7 @@ public class GCDTOHormiga {
     public void setGCIdUbicacion(Integer gcIdUbicacion) {
         GCIdUbicacion = gcIdUbicacion;
     }
-    public String getgcEstado() {
+    public String getGCEstado() {
         return GCEstado;
     }
     public void setGCEstado(String gcEstado) {
@@ -67,7 +67,6 @@ public class GCDTOHormiga {
         GCFechaModifica = gcFechaModifica;
     }
 
-
     public GCDTOHormiga(){}
     
     public GCDTOHormiga(String gcTipoHormiga){
@@ -76,16 +75,32 @@ public class GCDTOHormiga {
     
     public GCDTOHormiga(int gcIdHormiga, String gcTipoHormiga, int gcIdIngestaNativa, int gcIdGenoAlimento, int gcIdSexo, int gcIdUbicacion, String gcEstado,   String gcFechaCreacion,
     String gcFechaModifica ){
-        this.GCIdHormiga = gcIdHormiga;
-        this.GCTipoHormiga = gcTipoHormiga;
-        this.GCIdIngestaNativa = gcIdIngestaNativa;
-        this.GCIdGenoAlimento = gcIdGenoAlimento;
-        this.GCIdSexo = gcIdSexo;
-        this.GCIdUbicacion = gcIdUbicacion;
-        this.GCEstado = gcEstado;
-        this.GCFechaCreacion = gcFechaCreacion;
-        this.GCFechaModifica = gcFechaModifica;
+        this.GCIdHormiga        = gcIdHormiga;
+        this.GCTipoHormiga      = gcTipoHormiga;
+        this.GCIdIngestaNativa  = gcIdIngestaNativa;
+        this.GCIdGenoAlimento   = gcIdGenoAlimento;
+        this.GCIdSexo           = gcIdSexo;
+        this.GCIdUbicacion      = gcIdUbicacion;
+        this.GCEstado           = gcEstado;
+        this.GCFechaCreacion    = gcFechaCreacion;
+        this.GCFechaModifica    = gcFechaModifica;
     }
+
+    @Override
+    public String toString() {
+        return getClass().getName()
+                + "\n IdHormiga           " + getGCIdHormiga()
+                + "\n TipoHormiga         " + getGCTipoHormiga()
+                + "\n IdIngestaNativa     " + getGCIdIngestaNativa()
+                + "\n IdGenoAlimento      " + getGCIdGenoAlimento()
+                + "\n IdSexo              " + getGCIdSexo()
+                + "\n IdUbicacion         " + getGCIdUbicacion()
+                + "\n Estado              " + getGCEstado()
+                + "\n fechaCreacion       " + getGCFechaCreacion()
+                + "\n fechaModifica       " + getGCFechaModifica();
+
+    }
+
 
 
 

@@ -17,7 +17,6 @@ public class GCPanelBotones extends JPanel{
 
     public GCPanelBotones(){
         customizeComponent();
-        //customizeComponent2();
         configurarAcciones();
     }
 
@@ -42,7 +41,4 @@ public class GCPanelBotones extends JPanel{
         });
         
     }
-
-
-
 }
