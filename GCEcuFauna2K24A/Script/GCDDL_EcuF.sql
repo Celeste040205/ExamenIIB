@@ -47,7 +47,7 @@ CREATE TABLE GCUbicacion (
         ,IdClgIngestaNativa        INTEGER         NOT NULL REFERENCES GCCatalogo(IdCatalogo) 
         ,IdClgGenoAlimento         INTEGER         NOT NULL REFERENCES GCCatalogo(IdCatalogo)
         ,IdclgSexo                 INTEGER         NOT NULL REFERENCES GCCatalogo(IdCatalogo)
-        ,IdUbicacion            INTEGER         NOT NULL REFERENCES GCUbicacion(IdUbicacion)
+        ,IdUbicacion               INTEGER         NOT NULL REFERENCES GCUbicacion(IdUbicacion)
         ,Estado                    VARCHAR(1)      NOT NULL DEFAULT('A')
         ,FechaCreacion             DATETIME        DEFAULT(datetime('now','localtime'))
         ,FechaModifica             DATETIME

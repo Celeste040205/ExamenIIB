@@ -30,6 +30,12 @@ INSERT INTO GCCatalogo
 ,(  4            ,'XY'       ,'Tipo de Genoalimento')
 ,(  4            ,'X'        ,'Tipo de Genoalimento');
 
+INSERT INTO GCCatalogo
+ ( IdCatalogoTipo ,Nombre         ,Descripcion   ) VALUES
+ (  3            ,'Nectarívoro'   ,'Tipo de Dieta de la hormiga');       -- 15
+
+
+
 
 INSERT INTO GCUbicacion 
 (Region, provincia) VALUES

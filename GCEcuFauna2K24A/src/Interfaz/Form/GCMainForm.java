@@ -8,7 +8,7 @@ import javax.swing.JFrame;
 import Interfaz.GCIAStyle;
 
 public class GCMainForm extends JFrame{
-    GCCedNomPanel GCCedNom = new GCCedNomPanel();
+    GCCedNomPanel GCCedNom   = new GCCedNomPanel();
     GCPanelCentral GCCentral = new GCPanelCentral();
 
     public GCMainForm(String tilteApp){
@@ -18,7 +18,7 @@ public class GCMainForm extends JFrame{
     private void customizeComponent(String tilteApp) {
 
         setTitle(tilteApp);
-        setSize(610, 570);
+        setSize(810, 570);
         setResizable(false);
         setLocationRelativeTo(null);
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
