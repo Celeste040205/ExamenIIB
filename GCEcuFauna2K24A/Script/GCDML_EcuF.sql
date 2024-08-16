@@ -77,3 +77,11 @@ SELECT H.IdHormiga, GCC.Nombre AS Sexo, GCC.IdCatalogoTipo
 FROM GCHormiga H
 JOIN GCCatalogo GCC ON H.IdClgTipoHormiga = GCC.IdCatalogo;
 
+DELETE FROM GCHormiga 
+WHERE IdClgTipoHormiga IN (2, 3, 1, 4)
+AND IdClgIngestaNativa IN (8, 10, 8, 9)
+AND IdClgGenoAlimento IN (13, 13, 14, 12)
+AND IdClgSexo IN (5, 7, 5, 6)
+AND IdUbicacion IN (1, 7, 16, 11);
+
+

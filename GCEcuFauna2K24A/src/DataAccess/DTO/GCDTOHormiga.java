@@ -1,99 +1,151 @@
 package DataAccess.DTO;
-
 public class GCDTOHormiga {
-    private Integer GCIdHormiga;
-    private String  GCTipoHormiga;
-    private Integer GCIdIngestaNativa;
-    private Integer GCIdGenoAlimento;
-    private Integer GCIdSexo;
-    private Integer GCIdUbicacion;
-    private String  GCEstado;
-    private String  GCFechaCreacion;
-    private String  GCFechaModifica;
-
-    public Integer getGCIdHormiga() {
-        return GCIdHormiga;
-    }
-    public void setGCIdHormiga(Integer gcIdHormiga) {
-        GCIdHormiga = gcIdHormiga;
-    }
-
-    public String getGCTipoHormiga() {
-        return GCTipoHormiga;
-    }
-    public void setGCTipoHormiga(String gcTipoHormiga) {
-        GCTipoHormiga = gcTipoHormiga;
-    }
-    public Integer getGCIdIngestaNativa() {
-        return GCIdIngestaNativa;
-    }
-    public void setGCIdIngestaNativa(Integer gcIdIngestaNativa) {
-        GCIdIngestaNativa = gcIdIngestaNativa;
-    }
-    public Integer getGCIdGenoAlimento() {
-        return GCIdGenoAlimento;
-    }
-    public void setGCIdGenoAlimento(Integer gcIdGenoAlimento) {
-        GCIdGenoAlimento = gcIdGenoAlimento;
-    }
-    public Integer getGCIdSexo() {
-        return GCIdSexo;
-    }
-    public void setGCIdSexo(Integer gcIdSexo) {
-        GCIdSexo = gcIdSexo;
-    }
-    public Integer getGCIdUbicacion() {
-        return GCIdUbicacion;
-    }
-    public void setGCIdUbicacion(Integer gcIdUbicacion) {
-        GCIdUbicacion = gcIdUbicacion;
-    }
-    public String getGCEstado() {
-        return GCEstado;
-    }
-    public void setGCEstado(String gcEstado) {
-        GCEstado = gcEstado;
-    }
-    public String getGCFechaCreacion() {
-        return GCFechaCreacion;
-    }
-    public void setGCFechaCreacion(String gcFechaCreacion) {
-        GCFechaCreacion = gcFechaCreacion;
-    }
-    public String getGCFechaModifica() {
-        return GCFechaModifica;
-    }
-    public void setGCFechaModifica(String gcFechaModifica) {
-        GCFechaModifica = gcFechaModifica;
-    }
+    
+    private Integer gcIdHormiga;
+    private Integer gcIdClgTipoHormiga;
+    private Integer gcIdClgIngestaNativa;
+    private Integer gcIdClgGenoAlimento;
+    private Integer gcIdClgSexo;
+    private Integer gcIdUbicacion;
+    private String  gcEstado;
+    private String  gcFechaCreacion;
+    private String  gcFechaModifica;
 
     public GCDTOHormiga(){}
-    
-    public GCDTOHormiga(String gcTipoHormiga){
-        this.GCTipoHormiga = gcTipoHormiga;
+
+
+    public GCDTOHormiga(Integer gcIdHormiga, Integer gcIdClgTipoHormiga, Integer gcIdClgIngestaNativa,
+            Integer gcIdClgGenoAlimento, Integer gcIdClgSexo, Integer gcIdUbicacion, String gcEstado,
+            String gcFechaCreacion, String gcFechaModifica) {
+        this.gcIdHormiga            = gcIdHormiga;
+        this.gcIdClgTipoHormiga     = gcIdClgTipoHormiga;
+        this.gcIdClgIngestaNativa   = gcIdClgIngestaNativa;
+        this.gcIdClgGenoAlimento    = gcIdClgGenoAlimento;
+        this.gcIdClgSexo            = gcIdClgSexo;
+        this.gcIdUbicacion          = gcIdUbicacion;
+        this.gcEstado               = gcEstado;
+        this.gcFechaCreacion        = gcFechaCreacion;
+        this.gcFechaModifica        = gcFechaModifica;
     }
-    
-    public GCDTOHormiga(int gcIdHormiga, String gcTipoHormiga, int gcIdIngestaNativa, int gcIdGenoAlimento, int gcIdSexo, int gcIdUbicacion, String gcEstado,   String gcFechaCreacion,
-    String gcFechaModifica ){
-        this.GCIdHormiga        = gcIdHormiga;
-        this.GCTipoHormiga      = gcTipoHormiga;
-        this.GCIdIngestaNativa  = gcIdIngestaNativa;
-        this.GCIdGenoAlimento   = gcIdGenoAlimento;
-        this.GCIdSexo           = gcIdSexo;
-        this.GCIdUbicacion      = gcIdUbicacion;
-        this.GCEstado           = gcEstado;
-        this.GCFechaCreacion    = gcFechaCreacion;
-        this.GCFechaModifica    = gcFechaModifica;
+
+
+
+    public Integer getGCIdHormiga() {
+        return gcIdHormiga;
     }
+
+
+
+    public void setGCIdHormiga(Integer gcIdHormiga) {
+        this.gcIdHormiga = gcIdHormiga;
+    }
+
+
+
+    public Integer getGCIdClgTipoHormiga() {
+        return gcIdClgTipoHormiga;
+    }
+
+
+
+    public void setGCIdClgTipoHormiga(Integer gcIdClgTipoHormiga) {
+        this.gcIdClgTipoHormiga = gcIdClgTipoHormiga;
+    }
+
+
+
+    public Integer getGCIdClgIngestaNativa() {
+        return gcIdClgIngestaNativa;
+    }
+
+
+
+    public void setGCIdClgIngestaNativa(Integer gcIdClgIngestaNativa) {
+        this.gcIdClgIngestaNativa = gcIdClgIngestaNativa;
+    }
+
+
+
+    public Integer getGCIdClgGenoAlimento() {
+        return gcIdClgGenoAlimento;
+    }
+
+
+
+    public void setGCIdClgGenoAlimento(Integer gcIdClgGenoAlimento) {
+        this.gcIdClgGenoAlimento = gcIdClgGenoAlimento;
+    }
+
+
+
+    public Integer getGCIdClgSexo() {
+        return gcIdClgSexo;
+    }
+
+
+
+    public void setGCIdClgSexo(Integer gcIdClgSexo) {
+        this.gcIdClgSexo = gcIdClgSexo;
+    }
+
+
+
+    public Integer getGCIdUbicacion() {
+        return gcIdUbicacion;
+    }
+
+
+
+    public void setGCIdUbicacion(Integer gcIdUbicacion) {
+        this.gcIdUbicacion = gcIdUbicacion;
+    }
+
+
+
+    public String getGCEstado() {
+        return gcEstado;
+    }
+
+
+
+    public void setGCEstado(String gcEstado) {
+        this.gcEstado = gcEstado;
+    }
+
+
+
+    public String getGCFechaCreacion() {
+        return gcFechaCreacion;
+    }
+
+
+
+    public void setGCFechaCreacion(String gcFechaCreacion) {
+        this.gcFechaCreacion = gcFechaCreacion;
+    }
+
+
+
+    public String getGCFechaModifica() {
+        return gcFechaModifica;
+    }
+
+
+
+    public void setGCFechaModifica(String gcFechaModifica) {
+        this.gcFechaModifica = gcFechaModifica;
+    }
+
+
 
     @Override
     public String toString() {
         return getClass().getName()
                 + "\n IdHormiga           " + getGCIdHormiga()
-                + "\n TipoHormiga         " + getGCTipoHormiga()
-                + "\n IdIngestaNativa     " + getGCIdIngestaNativa()
-                + "\n IdGenoAlimento      " + getGCIdGenoAlimento()
-                + "\n IdSexo              " + getGCIdSexo()
+                + "\n TipoHormiga         " + getGCIdClgTipoHormiga()
+                + "\n IdIngestaNativa     " + getGCIdClgIngestaNativa()
+                + "\n IdGenoAlimento      " + getGCIdClgGenoAlimento()
+                + "\n IdSexo              " + getGCIdClgSexo()
                 + "\n IdUbicacion         " + getGCIdUbicacion()
                 + "\n Estado              " + getGCEstado()
                 + "\n fechaCreacion       " + getGCFechaCreacion()
@@ -101,7 +153,6 @@ public class GCDTOHormiga {
 
     }
 
-
-
+    
 
 }

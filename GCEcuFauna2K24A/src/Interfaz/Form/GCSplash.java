@@ -8,7 +8,7 @@ import javax.swing.JProgressBar;
 
 import Interfaz.GCIAStyle;
 
-public abstract class cambiodepanel {
+public abstract class GCSplash {
     private static JFrame       GCfrmSplash;
     private static JProgressBar GCprbLoaging;
     private static ImageIcon    GCicoImagen ;

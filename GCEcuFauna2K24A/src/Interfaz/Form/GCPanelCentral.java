@@ -7,7 +7,6 @@ import java.awt.GridLayout;
 import java.awt.Image;
 import java.io.IOException;
 import java.sql.Connection;
-import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
@@ -17,15 +16,14 @@ import javax.imageio.ImageIO;
 import javax.swing.ImageIcon;
 import javax.swing.JLabel;
 import javax.swing.JMenuItem;
+import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.JPopupMenu;
 import javax.swing.JScrollPane;
 import javax.swing.JTable;
 import javax.swing.table.DefaultTableModel;
 
-import BusinessLogic.GCBLHormiga;
 import DataAccess.GCDataHelper;
-import DataAccess.DAO.GCDAOHormiga;
 import Interfaz.GCIAStyle;
 import Interfaz.Customer.GCButton;
 import Interfaz.Customer.GCButton3;
@@ -36,21 +34,21 @@ public class GCPanelCentral extends JPanel {
 
     private List<String> provincias = new ArrayList<>();
     private DefaultTableModel GCmodel;
-    public GCButton3 GCbtnCrear     = new GCButton3("Crear Hormiga");
+    public GCButton3 GCbtnCrear     = new GCButton3("Crear Hormiga Larva");
     public GCButton4 GCbtnEliminar  = new GCButton4("Eliminar");
     public GCButton4 GCbtnGuardar   = new GCButton4("Guardar");
 
     public GCPanelCentral() {
         // Inicializa el modelo de tabla
         GCmodel = new DefaultTableModel(
-            new Object[]{"IdHormiga", "TipoHormiga", "Ubicacion", "Sexo", "GenoAlimento", "IngestaNativa"}, 0) {
+            new Object[]{"IdHormiga", "TipoHormiga", "Ubicacion", "Sexo", "GenoAlimento", "IngestaNativa", "Estado"}, 0) {
             
             // Hacer las celdas no editables
             @Override
             public boolean isCellEditable(int row, int column) {
                 // Hacer las celdas editables solo si la fila no es la primera
                 if (row > 0) {
-                    return column == 1 || column == 2 || column == 3 || column == 4 || column == 5;
+                    return column == 1 || column == 2 || column == 3 || column == 4 || column == 5 || column == 6;
                 }
                 return false; // La primera fila no es editable
             }   
@@ -58,7 +56,7 @@ public class GCPanelCentral extends JPanel {
         
         cargarDatosDesdeDB();
         cargarProvinciasDesdeDB();
-        configurarAcciones();
+        //configurarAcciones();
 
         // Configuración del panel superior
         JPanel GCtopPanel = new JPanel(new FlowLayout(FlowLayout.LEFT));
@@ -69,8 +67,26 @@ public class GCPanelCentral extends JPanel {
         } catch (IOException e) {
             e.printStackTrace();
         }
-        GCtopPanel.add(new GCLabel3("Hormiguero Virtual               "));
+        GCtopPanel.add(new GCLabel3("Hormiguero Virtual         "));
         GCtopPanel.add(GCbtnCrear, FlowLayout.RIGHT);
+        GCbtnCrear.addActionListener(e -> { 
+            int respuesta = JOptionPane.showConfirmDialog(
+                null, 
+                "¿Estás seguro de crear una Hormiga Larva?", 
+                "Confirmación", 
+                JOptionPane.YES_NO_OPTION, 
+                JOptionPane.QUESTION_MESSAGE
+            );
+        
+            if (respuesta == JOptionPane.YES_OPTION) {
+                int numeroRegistro = GCmodel.getRowCount() + 1;
+                if (!provincias.isEmpty()) {
+                    int randomIndex = (int) (Math.random() * provincias.size());
+                    String provinciaAleatoria = provincias.get(randomIndex);
+                    GCmodel.addRow(new Object[]{numeroRegistro, "Larva", provinciaAleatoria, "Asexual", null, null, "VIVA"});
+                }
+        }
+        });
         add(GCtopPanel, BorderLayout.NORTH);
 
         // Configuración del panel central para mostrar la tabla
@@ -98,6 +114,7 @@ public class GCPanelCentral extends JPanel {
         JMenuItem GCHer = new JMenuItem("Herbívoro");
         JMenuItem GCOmn = new JMenuItem("Omnívoro");
         JMenuItem GCIns = new JMenuItem("Insectívoro");
+        JMenuItem GCNec = new JMenuItem("Nectarívoro");
         
         GCX.addActionListener(  e -> GCGenoAlimento.setText(GCX.getText()));
         GCXX.addActionListener( e -> GCGenoAlimento.setText(GCXX.getText()));
@@ -106,6 +123,7 @@ public class GCPanelCentral extends JPanel {
         GCHer.addActionListener(e -> GCIngestaNativa.setText(GCHer.getText()));
         GCOmn.addActionListener(e -> GCIngestaNativa.setText(GCOmn.getText()));
         GCIns.addActionListener(e -> GCIngestaNativa.setText(GCIns.getText()));
+        GCNec.addActionListener(e -> GCIngestaNativa.setText(GCNec.getText()));
         
         GCGenoAlimentoMenu.add(GCX);
         GCGenoAlimentoMenu.add(GCXX);
@@ -114,6 +132,7 @@ public class GCPanelCentral extends JPanel {
         GCIngestaNativaMenu.add(GCHer);
         GCIngestaNativaMenu.add(GCOmn);
         GCIngestaNativaMenu.add(GCIns);
+        GCIngestaNativaMenu.add(GCNec);
         
         GCGenoAlimento.addActionListener(e -> {
             GCGenoAlimentoMenu.show(GCGenoAlimento, 0, GCGenoAlimento.getHeight());
@@ -130,37 +149,62 @@ public class GCPanelCentral extends JPanel {
 
                 if ("XX".equals(genoAlimento)) {
                     GCmodel.setValueAt("XX", lastRowIndex, 4);
-                    String tipoHormiga = Math.random() < 0.5 ? "Larva" : "Reina";
+                    String tipoHormiga = Math.random() < 0.9 ? "Reina" : "Rastreadora";
                     GCmodel.setValueAt(tipoHormiga, lastRowIndex, 1);
                     GCmodel.setValueAt("Femenino", lastRowIndex, 3);
 
                 } else if ("XY".equals(genoAlimento)) {
                     GCmodel.setValueAt("XY", lastRowIndex, 4);
-                    GCmodel.setValueAt("Soldado", lastRowIndex, 1);
+                    String tipoHormiga = Math.random() < 0.5 ? "Soldado" : "Zángano";
+                    GCmodel.setValueAt(tipoHormiga, lastRowIndex, 1);
                     GCmodel.setValueAt("Masculino", lastRowIndex, 3);
 
                 } else {
                     GCmodel.setValueAt(genoAlimento, lastRowIndex, 4);
                     GCmodel.setValueAt("Asexual", lastRowIndex, 3);
-                    GCmodel.setValueAt("Zángano", lastRowIndex, 1);
-                }
-
-                // Asignar una provincia aleatoria
-                if (!provincias.isEmpty()) {
-                    int randomIndex = (int) (Math.random() * provincias.size());
-                    String provinciaAleatoria = provincias.get(randomIndex);
-                    GCmodel.setValueAt(provinciaAleatoria, lastRowIndex, 2);
-                }
+                    GCmodel.setValueAt("Larva", lastRowIndex, 1);
+                }                
             }
         });
         
         GCbtnAlimenNat.addActionListener(e -> {
-            int lastRowIndex = GCmodel.getRowCount() - 1; 
+            int lastRowIndex = GCmodel.getRowCount() - 1;
             if (lastRowIndex >= 0) {
-                // Actualizar la columna "Ingesta Nativa"
-                GCmodel.setValueAt(GCIngestaNativa.getText(), lastRowIndex, 5);
+
+                String tipoHormiga = (String) GCmodel.getValueAt(lastRowIndex, 1);
+                String ingestaNativaSeleccionada = GCIngestaNativa.getText();
+        
+                String nuevoEstado = "VIVA"; 
+                
+                if ("Reina".equals(tipoHormiga)) {
+                    if (!"Insectívoro".equals(ingestaNativaSeleccionada)) {
+                        nuevoEstado = "MUERTA";
+                    }
+                } else if ("Larva".equals(tipoHormiga)) {
+                    if (!"Nectarívoro".equals(ingestaNativaSeleccionada)) {
+                        nuevoEstado = "MUERTA";
+                    }
+                } else if ("Soldado".equals(tipoHormiga)) {
+                    if (!"Carnívoro".equals(ingestaNativaSeleccionada)) {
+                        nuevoEstado = "MUERTA";
+                    }
+                } else if ("Rastreadora".equals(tipoHormiga)) {
+                    if (!"Herbívoro".equals(ingestaNativaSeleccionada)) {
+                        nuevoEstado = "MUERTA";
+                    }
+                } else if ("Zángano".equals(tipoHormiga)) {
+                    if (!"Omnívoro".equals(ingestaNativaSeleccionada)) {
+                        nuevoEstado = "MUERTA";
+                    }
+                }
+        
+                GCmodel.setValueAt(ingestaNativaSeleccionada, lastRowIndex, 5);
+        
+                GCmodel.setValueAt(nuevoEstado, lastRowIndex, 6);
             }
         });
+        
+        
         
         GCbottomPanel.add(GCGenoAlimento);
         GCbottomPanel.add(GCbtnAlimenGeno);
@@ -192,13 +236,14 @@ public class GCPanelCentral extends JPanel {
              ResultSet rs = stmt.executeQuery(query)) {
 
             while (rs.next()) {
-                Object[] row = new Object[6];
+                Object[] row = new Object[7];
                 row[0] = rs.getInt("IdHormiga");
                 row[1] = rs.getString("TipoHormiga");
                 row[2] = rs.getString("Ubicacion");
                 row[3] = rs.getString("Sexo");
                 row[4] = rs.getString("GenoAlimento");
                 row[5] = rs.getString("IngestaNativa");
+                row[6] = rs.getString("Estado");
                 GCmodel.addRow(row);
             }
         } catch (SQLException e) {
@@ -207,15 +252,11 @@ public class GCPanelCentral extends JPanel {
         }
     }
 
-    private void configurarAcciones() {
-        GCbtnCrear.addActionListener(e -> { 
-            // Agregar una nueva fila vacía a la tabla
-            GCmodel.addRow(new Object[]{null, null, null, null, null, null});
-        });
 
-        GCbtnEliminar.addActionListener(  e -> Eliminar());
 
-    }
+
+
+
 
     private void cargarProvinciasDesdeDB() {
         String query = "SELECT DISTINCT Provincia FROM GCUbicacion";
@@ -233,19 +274,35 @@ public class GCPanelCentral extends JPanel {
         }
     }
 
-    private void Eliminar() {
-        try {
-            if (GCIAStyle.showConfirmYesNo("Seguro que desea Eliminar?")) {
+    // private void Eliminar() {
+    //     try {
+    //         if (GCIAStyle.showConfirmYesNo("Seguro que desea Eliminar?")) {
 
-                if (!GCBLHormiga.delete(GCDAOHormiga.gcIdHormiga()))
-                    throw new Exception("Error al eliminar...!");
-                loadRow();
-                showRow();
-                showTable();
-            }
-        } catch (Exception e) {
-            GCIAStyle.showMsgError(e.getMessage());
-        }
-    }
+    //             if (!GCBLHormiga.delete(GCDAOHormiga.gcIdHormiga()))
+    //                 throw new Exception("Error al eliminar...!");
+    //             loadRow();
+    //             showRow();
+    //             showTable();
+    //         }
+    //     } catch (Exception e) {
+    //         GCIAStyle.showMsgError(e.getMessage());
+    //     }
+    // }
+
+    // private void loadRow()  {
+    //     try {
+    //         gcRowNum      = 1;
+    //         gcHormigasDAO  = GCBLHormiga.getBy(gcRowNum);
+    //         gcIdRowMax   = GCBLHormiga.getRowCount();
+    //     } catch (Exception e) {
+    //         GCIAStyle.showMsg(e.getMessage());
+    //     }
+    // }
+
+    // private void showRow() {
+    //     boolean gcHormigaNull = (GCDAOHormiga == null);
+    //     gcTxtRowNum.setText((gcHormigaNull) ? " " : gcHormigasDAO.gcGetIdHormiga().toString());
+    //     gcLblTotalReg.setText(gcRowNum.toString() + " de " + gcIdRowMax.toString());
+    // }
 
 }
