@@ -10,7 +10,6 @@ import Interfaz.GCIAStyle;
 public class GCMainForm extends JFrame{
     GCCedNomPanel GCCedNom = new GCCedNomPanel();
     GCPanelCentral GCCentral = new GCPanelCentral();
-    GCPanelBotones GCBotones = new GCPanelBotones();
 
     public GCMainForm(String tilteApp){
         customizeComponent(tilteApp);
@@ -19,7 +18,7 @@ public class GCMainForm extends JFrame{
     private void customizeComponent(String tilteApp) {
 
         setTitle(tilteApp);
-        setSize(600, 620);
+        setSize(610, 570);
         setResizable(false);
         setLocationRelativeTo(null);
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
@@ -31,7 +30,6 @@ public class GCMainForm extends JFrame{
         // Agregar los paneles al contenedor
         GCcontainer.add(GCCedNom, BorderLayout.NORTH);
         GCcontainer.add(GCCentral, BorderLayout.CENTER);
-        GCcontainer.add(GCBotones, BorderLayout.SOUTH);
         setVisible(true);
     }
 

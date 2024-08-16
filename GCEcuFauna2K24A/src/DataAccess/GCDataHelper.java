@@ -32,4 +32,5 @@ public class GCDataHelper {
     public static Connection getConnection() throws SQLException {
         return DriverManager.getConnection(GCConnection);
     }
+
 }

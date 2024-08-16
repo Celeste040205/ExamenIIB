@@ -12,6 +12,7 @@ import java.util.List;
 
 import DataAccess.GCDataHelper;
 import DataAccess.DTO.GCDTOHormiga;
+import Framework.GCException;
 
 public class GCDAOHormiga extends GCDataHelper implements GCIDAO<GCDTOHormiga> {
 
@@ -70,18 +71,19 @@ public class GCDAOHormiga extends GCDataHelper implements GCIDAO<GCDTOHormiga> {
 
     @Override
     public boolean delete(int id) throws Exception {
-        String query = " UPDATE GCHORMIGA SET Estado = ? WHERE IdHormiga = ?";
+        String query = " UPDATE GCHormiga SET Estado = ? WHERE IdHormiga = ?";
         try {
-            Connection          conn = openConnection();
-            PreparedStatement  pstmt = conn.prepareStatement(query);
-            pstmt.setString(1, "X");
-            pstmt.setInt(2, id);
-            pstmt.executeUpdate();
+            Connection          gcConn = openConnection();
+            PreparedStatement  gcPstmt = gcConn.prepareStatement(query);
+            gcPstmt.setString(1, "X");
+            gcPstmt.setInt(2, id);
+            gcPstmt.executeUpdate();
             return true;
         } 
         catch (SQLException e) {
-            throw e; 
+            throw new GCException(e.getMessage(), getClass().getName(), "delete()");
         }
+
     }
 
     @Override
@@ -114,6 +116,24 @@ public class GCDAOHormiga extends GCDataHelper implements GCIDAO<GCDTOHormiga> {
             throw e; 
         }
         return gcOs;
+    }
+
+    public Integer getRowCount()  throws Exception  {
+        String query =" SELECT COUNT(*) TotalReg "
+                     +" FROM    MFHormiga         "
+                     +" WHERE   Estado ='A'      ";
+        try {
+            Connection mfConn = openConnection();         // conectar a DB     
+            Statement  mfStmt = mfConn.createStatement();   // CRUD : select * ...    
+            ResultSet mfRs   = mfStmt.executeQuery(query);  // ejecutar la
+            while (mfRs.next()) {
+                return mfRs.getInt(1);                    // TotalReg
+            }
+        } 
+        catch (SQLException e) {
+            throw new GCException(e.getMessage(), getClass().getName(), "getRowCount()");
+        }
+        return 0;
     }
 
     @Override
